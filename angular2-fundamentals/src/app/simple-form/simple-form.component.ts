@@ -4,11 +4,34 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   selector: 'app-simple-form',
   template: `
     <div>
-      <input #myInput type="text" [(ngModel)]="meh">
+      <input 
+        #myInput 
+        type="text" 
+        [(ngModel)]="meh"
+        [ngClass]="{mousedown: isMousedown}"
+        (mousedown)="isMousedown = true"
+        (mouseup)="isMousedown = false"
+        (mouseleave)="isMousedown = false"
+      >
       <button (click)="update.emit({text:meh})">Click Me!</button>
     </div>
   `,
-  styles: []
+  styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+    }
+    input:focus {
+      font-weight: bold;
+      outline: none;
+    }
+    button {
+      border: none;
+    }
+    .mousedown {
+      border: 2px solid green;
+    }
+  `]
 })
 export class SimpleFormComponent implements OnInit {
   @Input() meh : string = "meh";

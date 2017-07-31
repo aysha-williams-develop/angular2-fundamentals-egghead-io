@@ -17,7 +17,11 @@ import { MailService } from './mail.service';
         
       </app-simple-form>
     </div>
-    `
+    `,
+    styles: [`
+      app-simple-form {
+        margin-bottom: 10px;
+      }`]
 })
 export class AppComponent {
   title = "Let's Get started!";

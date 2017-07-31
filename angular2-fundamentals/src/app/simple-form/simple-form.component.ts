@@ -5,7 +5,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div>
       <input #myInput type="text" [(ngModel)]="meh">
-      <button (click)="update.emit({text:message})">Click Me!</button>
+      <button (click)="update.emit({text:meh})">Click Me!</button>
     </div>
   `,
   styles: []

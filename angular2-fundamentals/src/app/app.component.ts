@@ -7,11 +7,12 @@ import { MailService } from './mail.service';
   template: `
     <div>
       <ul>
-        <li *ngFor="let message of mail.messages">{{message}}</li>
+        <li *ngFor="let message of mail.messages">{{message.text}}</li>
       </ul>
-      <app-simple-form *ngFor="let message of mail.messages" 
-        [meh]="message"
-        (click)="onUpdate($event)"
+      <app-simple-form 
+        *ngFor="let message of mail.messages" 
+        [meh]="message.text"
+        (update)="onUpdate(message.id, $event.text)"
       >
         
       </app-simple-form>
@@ -23,7 +24,8 @@ export class AppComponent {
 
   constructor(private mail: MailService ) {}
 
-  onUpdate(event) {
+  onUpdate(id, text) {
+    this.mail.update(id, text);
     console.log(event);
   }
 }
